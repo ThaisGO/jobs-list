@@ -1,25 +1,71 @@
 <template>
-  <div class="grid-container full">
-    <div class="one-half column">
-          <h4 class="hero-heading">Stop coding non-responsive sites. Let users view sites from anywhere.</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus quis felis et ullamcorper. Duis vitae porttitor metus, sed commodo leo. Cras eget elit sit amet justo tempus tincidunt ac in enim. Nullam vulputate aliquam volutpat. Nulla tortor leo, efficitur commodo ex eu, convallis pellentesque ante. Duis fermentum quis tortor vitae pretium. Donec ligula libero, interdum at dui non, pellentesque tincidunt nunc. Donec vitae libero nisi. </p>
-          <a class="button button-primary" href="http://getskeleton.com">Try Skeleton</a>
+  <header class="banner"></header>
+
+  <main class="container">
+    <div class="card">
+      <div class="flex ">
+        <div class="image">
+          <img src="../assets/img/companies/photosnap.svg" alt="">
         </div>
-  </div>
+        <div class="flex flex-colunm">
+          <div class="flex">
+            <h3>Photosnap</h3>
+            <span>NEW</span>
+            <span>FEATURED</span>
+          </div>
+          <h2>Senior front end developer</h2>
+          <div class="flex">
+            <span>1 day ago</span>
+            <span>full time</span>
+            <span>USA only</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex tags">
+        <span>Front end</span>
+        <span>Front end</span>
+        <span>Front end</span>
+      </div>
+    </div>
+  </main>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+  name: "HomeView",
+  components: {},
+};
 </script>
 
 <style lang="scss">
+.banner {
+  height: 250px;
+  background-color: aquamarine;
+  width: 100%;
+}
 
+.card {
+  display: grid;
+  grid-template-columns:  1fr 2fr;
+  padding: 12px;
+  align-items: center;
+  background-color: hotpink;
+  border-radius: 12px;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  img {
+    width: 60px;
+    max-height: 100%;
+  }
+}
+
+.tags {
+  justify-self: end;
+}
 </style>
