@@ -31,7 +31,9 @@
 </template>
 
 <script>
-    props: ['jobs']
+    export default {
+        props: ['jobs']
+    }
 </script>
 
 <style lang="scss" scoped>

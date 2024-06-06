@@ -10,26 +10,25 @@
 
 <script>
 // @ is an alias to /src
-import HeadBanner from '../components/HeadBanner.vue'
-import JobCard from '@/components/JobCard.vue'
-import getJobs from '@/composables/getJobs.js'
-import { setTimeout } from 'core-js';
+import { onMounted } from "vue";
+
+import HeadBanner from "../components/HeadBanner.vue";
+import JobCard from "@/components/JobCard.vue";
+import useJobs from "@/composables/getJobs.js";
 
 export default {
   name: "HomeView",
   components: { HeadBanner, JobCard },
 
   setup() {
-    const { jobs, error, load } = getJobs()
-    
-    setTimeout(() => {
-      load()
-    }, 2000);
-    console.log('jobs here', jobs)
-
+    const { jobs, error, getJobs } = useJobs();
+    onMounted(() => {
+      getJobs();
+      console.log('jobs here', jobs)
+    });
     return { jobs, error }
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

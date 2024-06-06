@@ -1,16 +1,16 @@
 import axios from 'axios';
-import { ref } from "vue"
+import { ref } from 'vue'
 
-const getJobs = () => {
+export default function useJobs() {
     const jobs = ref([])
     const error = ref(null)
 
-    const load = async () => {
+    const getJobs = async () => {
         try {
-            await axios.get('http://localhost:3000/jobs').then(res => {
-                if (res.status === 200) {
-                    console.log(res)
-                    jobs.value = res.data
+            axios.get('http://localhost:3000/jobs').then(response => {
+                if (response.status === 200) {
+                    // console.log(response)
+                    jobs.value = response.data;
                 } else {
                     throw Error('No data available')
                 }
@@ -24,6 +24,6 @@ const getJobs = () => {
             }
         }
     }
-    return { jobs, error, load }
+
+    return { jobs, error, getJobs }
 }
-export default getJobs
