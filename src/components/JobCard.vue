@@ -1,5 +1,8 @@
 <template>
-    <div class="card items-center ">
+    <div v-for="job in jobs" :key="job.id">
+        <div>{{ job.company }}</div>
+    </div>
+    <!-- <div class="card items-center">
         <div class="flex items-center">
             <div class="flex image">
                 <img src="../assets/img/companies/photosnap.svg" alt="">
@@ -11,7 +14,7 @@
                     <span class="feature">FEATURED</span>
                 </div>
                 <h1>Senior front end developer</h1>
-                <div class="flex">
+                <div class="flex card-spec">
                     <span>1 day ago</span>
                     <span>full time</span>
                     <span>USA only</span>
@@ -24,13 +27,11 @@
             <span>Front end</span>
             <span>Front end</span>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <script>
-export default {
-
-}
+    props: ['jobs']
 </script>
 
 <style lang="scss" scoped>
@@ -45,6 +46,10 @@ export default {
     border-radius: 8px;
     box-shadow: 40px 35px 50px -55px $color-dark-cyan;
 
+    h1 {
+        margin: 0.5rem 0;
+    }
+
     .image {
         padding-right: 1.2rem;
 
@@ -55,7 +60,7 @@ export default {
     }
 
     &-title {
-        gap: 0.75rem;
+        gap: 0.5rem;
 
         span {
             font-size: 0.75rem;
@@ -64,13 +69,96 @@ export default {
             border-radius: 50px;
             color: $color-white;
             text-transform: uppercase;
-            &.new {background-color: $color-dark-cyan;}
-            &.feature {background-color: $color-black;}
+
+            &.new {
+                background-color: $color-dark-cyan;
+            }
+
+            &.feature {
+                background-color: $color-black;
+            }
+        }
+    }
+
+    &-spec {
+        gap: 2.5rem;
+
+        span {
+            font-size: 0.75;
+            font-weight: 500;
+            color: $color-dark-grayish-cyan;
         }
     }
 
     &-tags {
         justify-self: end;
+        gap: 0.5rem;
+
+        span {
+            font-size: 1rem;
+            font-weight: 700;
+            color: $color-dark-cyan;
+            background-color: $color-light-grayish-cyan;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.5s;
+
+            &:hover {
+                color: $color-white;
+                background-color: $color-dark-cyan;
+            }
+        }
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    .card {
+        &-tags {
+            flex-wrap: wrap;
+        }
+    }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px),
+all and (max-width: 480px) {
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: normal;
+
+        .image {
+            display: block;
+
+            img {
+                width: 60px;
+            }
+        }
+
+        &-tags::before {
+            content: '';
+            width: 100%;
+            margin: 1rem auto;
+            background-color: $color-dark-grayish-cyan;
+            height: 1px;
+            opacity: 0.8;
+        }
+
+        &-tags {
+            flex-wrap: wrap;
+        }
+    }
+}
+
+@media all and (max-width: 480px) {
+    .card {
+        &-spec {
+            gap: 1rem;
+        }
+
+        h1 {
+            color: $color-black;
+        }
     }
 }
 </style>
