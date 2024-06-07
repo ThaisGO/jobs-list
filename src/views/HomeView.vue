@@ -3,7 +3,7 @@
   <div v-if="error">{{ error }}</div>
   <main class="container">
     <div v-if="jobs.length">
-      <JobCard :jobs="jobs" />
+      <JobCard :jobs="jobs" @filter="filterJobs" />
     </div>
   </main>
 </template>
@@ -22,11 +22,31 @@ export default {
 
   setup() {
     const { jobs, error, getJobs } = useJobs();
+    let tagFilter = []
+    const backupValue = jobs.value
+
     onMounted(() => {
       getJobs();
-      console.log('jobs here', jobs)
     });
-    return { jobs, error }
+
+    const filterJobs = (tag) => {
+      let filtro = jobs.value
+
+      // FILTER COMPONENT
+      if (!tagFilter.includes(tag)) {
+        tagFilter.push(tag)
+      } else { tagFilter = tagFilter.filter(item => item !== tag) }
+
+      // FILTER LIST
+      // jobs.value = filtro.filter(job => {
+      //   return tagFilter.every(tag => job.languages.includes(tag));
+      // });
+
+      // console.log('Array', tagFilter);
+      // console.log('filter', jobs.value);
+    }
+
+    return { jobs, error, filterJobs, tagFilter }
   },
 };
 </script>
@@ -34,6 +54,7 @@ export default {
 <style lang="scss" scoped>
 main {
   margin-top: 4rem;
+
   &>div>JobCard {
     margin-bottom: 2rem;
   }

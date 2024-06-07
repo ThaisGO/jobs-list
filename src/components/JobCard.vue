@@ -1,7 +1,4 @@
 <template>
-    <!-- <div v-for="job in jobs" :key="job.id">
-        <div>{{ job.company }}</div>
-    </div> -->
     <div class="card items-center" v-for="job in jobs" :key="job.id">
         <div class="flex items-center">
             <div class="flex image">
@@ -23,18 +20,28 @@
             </div>
         </div>
 
-        <div class="">
-            <div class="flex card-tags" v-for="lang in job.languages" :key="lang">
-                <span>{{ lang }}</span>
+        <div class="flex card-tags">
+            <div class="card-tags-item" v-for="lang in job.languages" :key="lang" @click="handleFilter(lang)">
+                {{ lang }}
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        props: ['jobs']
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+    props: ['jobs'],
+
+    setup(props, { emit }) {
+        const handleFilter = (lang) => {
+            emit('filter', lang);
+        };
+
+        return { handleFilter };
     }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -43,6 +50,7 @@
 .card {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    margin-bottom: 1.75rem;
     padding: 1.7rem 1.2rem;
     background-color: $color-white;
     border-left: 5px solid $color-dark-cyan;
@@ -94,10 +102,11 @@
     }
 
     &-tags {
+
         justify-content: end;
         gap: 0.5rem;
 
-        span {
+        &-item {
             font-size: 1rem;
             font-weight: 700;
             color: $color-dark-cyan;
@@ -149,6 +158,7 @@ all and (max-width: 480px) {
 
         &-tags {
             flex-wrap: wrap;
+            justify-content: start
         }
     }
 }
