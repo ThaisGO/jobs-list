@@ -34,5 +34,8 @@ export default {
 <style lang="scss" scoped>
 main {
   margin-top: 4rem;
+  &>div>JobCard {
+    margin-bottom: 2rem;
+  }
 }
 </style>

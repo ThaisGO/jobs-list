@@ -1,33 +1,34 @@
 <template>
-    <div v-for="job in jobs" :key="job.id">
+    <!-- <div v-for="job in jobs" :key="job.id">
         <div>{{ job.company }}</div>
-    </div>
-    <!-- <div class="card items-center">
+    </div> -->
+    <div class="card items-center" v-for="job in jobs" :key="job.id">
         <div class="flex items-center">
             <div class="flex image">
-                <img src="../assets/img/companies/photosnap.svg" alt="">
+                <img src="../assets/images/companies/photosnap.svg" alt="">
+                <!-- <img :src="require(job.logo)" alt=""> -->
             </div>
             <div class="flex flex-colunm">
                 <div class="flex card-title">
-                    <h2>Photosnap</h2>
-                    <span class="new">NEW</span>
-                    <span class="feature">FEATURED</span>
+                    <h2>{{ job.company }}</h2>
+                    <span class="new" v-if="job.new">NEW</span>
+                    <span class="feature" v-if="job.featured">FEATURED</span>
                 </div>
-                <h1>Senior front end developer</h1>
+                <h1>{{ job.position }}</h1>
                 <div class="flex card-spec">
-                    <span>1 day ago</span>
-                    <span>full time</span>
-                    <span>USA only</span>
+                    <span>{{ job.postedAt }}</span>
+                    <span>{{ job.contract }}</span>
+                    <span>{{ job.location }}</span>
                 </div>
             </div>
         </div>
 
-        <div class="flex card-tags">
-            <span>Front end</span>
-            <span>Front end</span>
-            <span>Front end</span>
+        <div class="">
+            <div class="flex card-tags" v-for="lang in job.languages" :key="lang">
+                <span>{{ lang }}</span>
+            </div>
         </div>
-    </div> -->
+    </div>
 </template>
 
 <script>
@@ -93,7 +94,7 @@
     }
 
     &-tags {
-        justify-self: end;
+        justify-content: end;
         gap: 0.5rem;
 
         span {
