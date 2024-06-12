@@ -3,7 +3,7 @@
         {
             "id": 1,
             "company": "Photosnap",
-            "logo": "../assets/images/companies/photosnap.svg",
+            "logo": "../assets/photosnap.svg",
             "new": true,
             "featured": true,
             "position": "Senior Frontend Developer",
@@ -22,7 +22,7 @@
         {
             "id": 2,
             "company": "Manage",
-            "logo": "./images/manage.svg",
+            "logo": "img/manage.svg",
             "new": true,
             "featured": true,
             "position": "Fullstack Developer",
@@ -41,7 +41,7 @@
         {
             "id": 3,
             "company": "Account",
-            "logo": "./images/account.svg",
+            "logo": "./img/account.svg",
             "new": true,
             "featured": false,
             "position": "Junior Frontend Developer",

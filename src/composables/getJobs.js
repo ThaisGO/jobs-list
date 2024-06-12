@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 export default function useJobs() {
     const jobs = ref([])
+    const backupJobs = ref([])
     const error = ref(null)
 
     const getJobs = async () => {
@@ -11,6 +12,7 @@ export default function useJobs() {
                 if (response.status === 200) {
                     // console.log(response)
                     jobs.value = response.data;
+                    backupJobs.value = response.data;
                 } else {
                     throw Error('No data available')
                 }
@@ -25,5 +27,5 @@ export default function useJobs() {
         }
     }
 
-    return { jobs, error, getJobs }
+    return { jobs, backupJobs, error, getJobs }
 }

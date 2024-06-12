@@ -2,8 +2,10 @@
     <div class="card items-center" v-for="job in jobs" :key="job.id">
         <div class="flex items-center">
             <div class="flex image">
-                <img src="../assets/images/companies/photosnap.svg" alt="">
-                <!-- <img :src="require(job.logo)" alt=""> -->
+                <!-- string direto -->
+                <img src="@/assets/manage.svg" alt="">
+                <!-- string do json -->
+                <!-- <img :src="job.logo" alt=""> -->
             </div>
             <div class="flex flex-colunm">
                 <div class="flex card-title">

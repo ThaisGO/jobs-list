@@ -10,7 +10,7 @@
 
 <script>
 // @ is an alias to /src
-import { onMounted } from "vue";
+import { onBeforeMount, onMounted} from "vue";
 
 import HeadBanner from "../components/HeadBanner.vue";
 import JobCard from "@/components/JobCard.vue";
@@ -21,32 +21,29 @@ export default {
   components: { HeadBanner, JobCard },
 
   setup() {
-    const { jobs, error, getJobs } = useJobs();
+    const { jobs, backupJobs, error, getJobs } = useJobs();
     let tagFilter = []
-    const backupValue = jobs.value
-
-    onMounted(() => {
+    
+    onBeforeMount(() => {
       getJobs();
-    });
+    }) 
 
     const filterJobs = (tag) => {
-      let filtro = jobs.value
-
       // FILTER COMPONENT
       if (!tagFilter.includes(tag)) {
         tagFilter.push(tag)
       } else { tagFilter = tagFilter.filter(item => item !== tag) }
 
       // FILTER LIST
-      // jobs.value = filtro.filter(job => {
-      //   return tagFilter.every(tag => job.languages.includes(tag));
-      // });
+      jobs.value = backupJobs.value.filter(job => {
+        return tagFilter.every(tag => job.languages.includes(tag));
+      });
 
-      // console.log('Array', tagFilter);
-      // console.log('filter', jobs.value);
+      console.log('Array', tagFilter);
+      console.log('filter', jobs.value);
     }
 
-    return { jobs, error, filterJobs, tagFilter }
+    return { jobs, backupJobs, error, filterJobs, tagFilter }
   },
 };
 </script>
@@ -54,9 +51,5 @@ export default {
 <style lang="scss" scoped>
 main {
   margin-top: 4rem;
-
-  &>div>JobCard {
-    margin-bottom: 2rem;
-  }
 }
 </style>
