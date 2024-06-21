@@ -2,9 +2,9 @@
   <HeadBanner />
   <div v-if="error">{{ error }}</div>
   <main class="container">
-    <FilterTech />
+    <FilterTech :data="tagFilter" @clear="clearFilter" @remove="removeTag" v-if="tagFilter.length > 0" />
 
-    <div v-if="jobs.length">
+    <div class="joblist" v-if="jobs.length">
       <JobCard :jobs="jobs" @filter="filterJobs" />
     </div>
   </main>
@@ -12,19 +12,20 @@
 
 <script>
 // @ is an alias to /src
-import { onBeforeMount } from "vue";
+import { onBeforeMount, reactive } from "vue";
 
 import HeadBanner from "../components/HeadBanner.vue";
 import JobCard from "@/components/JobCard.vue";
 import useJobs from "@/composables/getJobs.js";
+import FilterTech from "@/components/FilterTech.vue";
 
 export default {
   name: "HomeView",
-  components: { HeadBanner, JobCard },
+  components: { HeadBanner, JobCard, FilterTech },
 
   setup() {
     const { jobs, backupJobs, error, getJobs } = useJobs();
-    let tagFilter = []
+    let tagFilter = reactive([])
 
     onBeforeMount(() => {
       getJobs();
@@ -34,30 +35,41 @@ export default {
       // FILTER COMPONENT
       if (!tagFilter.includes(tag)) {
         tagFilter.push(tag)
-      } else { tagFilter = tagFilter.filter(item => item !== tag) }
+      } else {
+        // tagFilter = tagFilter.filter(item => item !== tag)
+        tagFilter.splice(tagFilter.indexOf(tag), 1);
+      }
 
       // FILTER LIST
       jobs.value = backupJobs.value.filter(job => {
         return tagFilter.every(tag => job.languages.includes(tag));
       });
-
-      console.log('Array', tagFilter);
-      console.log('filter', jobs.value);
     }
 
-    return { jobs, backupJobs, error, filterJobs, tagFilter }
+    const removeTag = (index) => {
+      console.log('click')
+      tagFilter.splice(tagFilter.indexOf(index), 1);
+      // FILTER LIST
+      jobs.value = backupJobs.value.filter(job => {
+        return tagFilter.every(tag => job.languages.includes(tag));
+      });
+    }
+
+    const clearFilter = () => {
+      tagFilter.length = 0
+    }
+
+    return { jobs, backupJobs, error, filterJobs, tagFilter, removeTag, clearFilter }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/variables.scss';
-
-.container {
-  
-}
-
 main {
   margin-top: 4rem;
+
+  .joblist {
+    margin: 3.5rem 0;
+  }
 }
 </style>
