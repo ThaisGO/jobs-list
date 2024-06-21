@@ -101,7 +101,6 @@ export default defineComponent({
     }
 
     &-tags {
-
         justify-content: end;
         gap: 0.5rem;
 
