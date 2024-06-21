@@ -8,7 +8,8 @@ export default function useJobs() {
 
     const getJobs = async () => {
         try {
-            axios.get('http://localhost:3000/jobs').then(response => {
+            // axios.get('http://localhost:3000/jobs').then(response => {
+            axios.get('/api/jobs').then(response => {
                 if (response.status === 200) {
                     // console.log(response)
                     jobs.value = response.data;
