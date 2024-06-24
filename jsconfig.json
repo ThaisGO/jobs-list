@@ -16,6 +16,6 @@
       "scripthost"
     ]
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/server.js"]
+  // "include": ["src/**/*"],
+  // "exclude": ["node_modules", "**/server.js"]
 }
