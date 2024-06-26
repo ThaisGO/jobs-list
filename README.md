@@ -1,6 +1,6 @@
 # Frontend Mentor - Job listings with filtering solution
 
-This is a solution to the [Job listings with filtering challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt). 
+This my version of the [Job listings with filtering challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt) challenge. 
 Frontend Mentor challenges help you improve your coding skills by building realistic projects, I highly recommend it if you want toput your skills to the test!
 
 ## Table of contents
@@ -19,7 +19,7 @@ Frontend Mentor challenges help you improve your coding skills by building reali
 
 This project consists of a simple list of jobs from various companies with a filter based on categories. 
 It is also responsive to any device
-You can check it out here: Live Site URL: [Add live site URL here](https://jobs-list-eight.vercel.app/)
+You can [check it out here](https://jobs-list-eight.vercel.app/) 
 
 If you want to download the code check the [Project setup](#project-setup) section.
 
