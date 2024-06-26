@@ -11,7 +11,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import { onBeforeMount, reactive } from "vue";
 
 import HeadBanner from "../components/HeadBanner.vue";
@@ -35,11 +34,9 @@ export default {
       // FILTER COMPONENT
       if (!tagFilter.includes(tag)) {
         tagFilter.push(tag)
-        console.log('array', tagFilter)
       } else {
         // tagFilter = tagFilter.filter(item => item !== tag)
         tagFilter.splice(tagFilter.indexOf(tag), 1);
-        console.log('array', tagFilter)
       }
 
       // FILTER LIST
@@ -54,7 +51,6 @@ export default {
       jobs.value = backupJobs.value.filter(job => {
         return tagFilter.every(tag => job.languages.includes(tag));
       });
-      console.log('array', tagFilter)
     }
 
     const clearFilter = () => {

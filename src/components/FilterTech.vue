@@ -22,7 +22,6 @@ export default defineComponent({
   setup(props, { emit }) {
     const tags = ref([...props.data]);
 
-    // Watch for changes in props.data and update tags accordingly
     watch(
       () => props.data, (newData) => {
         tags.value = [...newData];
