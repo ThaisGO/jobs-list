@@ -3,7 +3,7 @@
     <div class="filter">
       <div class="item" v-for="tag in tags" :key="tag">
         <span class="item-label">{{ tag }}</span>
-        <span class="item-icon" @click="removeTag(index)">x</span>
+        <span class="item-icon" @click="removeTag(tag)">x</span>
       </div>
     </div>
 
@@ -29,7 +29,7 @@ export default defineComponent({
     );
 
     const removeTag = (index) => {
-      emit('remove');
+      emit('remove', index);
     };
 
     const clearTags = () => {
@@ -55,10 +55,12 @@ export default defineComponent({
 
   .filter {
     display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 
     .item {
-      margin-left: 8px;
-      
+      // margin-left: 8px;
+
       &-label {
         padding: 0.5rem 0.75rem;
         border-top-left-radius: 4px;
@@ -68,7 +70,7 @@ export default defineComponent({
         font-weight: 700;
         color: $color-dark-cyan;
       }
-      
+
       &-icon {
         font-size: 1rem;
         font-weight: 700;

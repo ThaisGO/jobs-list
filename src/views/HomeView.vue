@@ -35,7 +35,6 @@ export default {
       if (!tagFilter.includes(tag)) {
         tagFilter.push(tag)
       } else {
-        // tagFilter = tagFilter.filter(item => item !== tag)
         tagFilter.splice(tagFilter.indexOf(tag), 1);
       }
 
