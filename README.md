@@ -1,7 +1,7 @@
 # Frontend Mentor - Job listings with filtering solution
 
 This my version of the [Job listings with filtering challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt) challenge. 
-Frontend Mentor challenges help you improve your coding skills by building realistic projects, I highly recommend it if you want toput your skills to the test!
+Frontend Mentor challenges help you improve your coding skills by building realistic projects, I highly recommend it if you want to put your skills to the test!
 
 ## Table of contents
 
@@ -18,13 +18,14 @@ Frontend Mentor challenges help you improve your coding skills by building reali
 ## Overview
 
 This project consists of a simple list of jobs from various companies with a filter based on categories. 
-It is also responsive to any device
+It is also responsive to any device.
 You can [check it out here](https://jobs-list-eight.vercel.app/) 
 
-If you want to download the code check the [Project setup](#project-setup) section.
+If you want to download the code, check the [Project setup](#project-setup) section.
 
 ### Screenshot
 <!-- TODO -->
+soon
 ![](./screenshot.jpg)
 
 ## The Project
@@ -41,7 +42,7 @@ If you want to download the code check the [Project setup](#project-setup) secti
 
 ### What I learned
 
-This project had the purpose of studying the Vue 3 framework concepts like the composition API, components and how to structure the routes and views using vue architecture. It also aimed to learn how to call an API and use Promises, the Axios library was chosen simply because I wanted to try something diferent from the Fetch option.
+This project had the purpose of applying some of the Vue 3 framework concepts like the composition API, components and how to structure the routes and views using vue architecture. It also aimed to learn how to call an API and use Promises, the Axios library was chosen simply because I wanted to try something diferent from the Fetch option.
 
 The Json-Server was chosen to "host the database" and mock the API endpoint I needed.
 
@@ -63,7 +64,6 @@ npm install
 ### Compiles and hot-reloads for development
 ```
 npm run serve
-npm run json
 ```
 
 ### Compiles and minifies for production
