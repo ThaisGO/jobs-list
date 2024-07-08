@@ -2,15 +2,33 @@
   <div class="container content">
     <div class="content-job flex" v-if="job">
       <div class="content-job--img">
-        <img src="https://placehold.jp/200x200.png" alt="" />
+        <!-- <img src="https://placehold.jp/200x200.png" alt="" /> -->
+        <img :src="require(`@/assets/${job.logo}`)" alt="">
       </div>
       <div class="content-job--info">
         <h1>{{ job.company }}</h1>
         <h2>{{ job.position }}</h2>
-        <span>Role: {{ job.role }} </span>
-        <span>Level: {{ job.level }} </span>
-        <span>Contract: {{ job.contract }}</span>
-        <span>Location: {{ job.location }}</span>
+
+        <div class="flex wrap items-center">
+          <div class="flex items-center">
+            <Briefcase color="gray" :size="18"/>
+            <span>Role: {{ job.role }} </span>
+          </div>
+          
+          <div class="flex items-center">
+            <BarChart color="gray" :size="18" />
+            <span>Level: {{ job.level }} </span>
+          </div>
+          <div class="flex items-center">
+            <FileText color="gray" :size="18"/>
+            <span>Contract: {{ job.contract }}</span>
+          </div>
+          <div class="flex items-center">
+            <Building color="gray" :size="18"/>
+            <span>Location: {{ job.location }}</span>
+          </div>
+        </div>
+        
 
         <div class="description">
           <h2>Description</h2>
@@ -30,7 +48,7 @@
             officia eius aspernatur repellendus suscipit? Vitae harum voluptas
             alias debitis tempora.
           </p>
-          <Camera color="red" :size="32" />
+          
         </div>
       </div>
     </div>
@@ -41,10 +59,15 @@
 <script>
 import { useRoute } from "vue-router";
 import useJob from "@/composables/getJob.js";
-import { Camera } from "lucide-vue-next";
+
+import { BarChart } from 'lucide-vue-next';
+import { FileText } from 'lucide-vue-next';
+import { Building } from 'lucide-vue-next';
+import { Briefcase } from 'lucide-vue-next';
 
 export default {
   props: ["id"],
+  components: { BarChart, FileText, Building, Briefcase },
   setup() {
     const route = useRoute();
     const { job, error, getJob } = useJob(route.params.id);
@@ -71,10 +94,15 @@ export default {
     &--info {
       flex-grow: 1;
 
+      .flex {
+        margin-right: 12px;
+      }
+
       span {
         font-size: 1.2rem;
         font-weight: 500;
         color: $color-dark-grayish-cyan;
+        margin-left: 8px;
       }
 
       .description {
