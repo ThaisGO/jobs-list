@@ -1,11 +1,13 @@
 <template>
+    <HeadBanner />
     <router-view/>
 </template>
 
 <script>
-import HomeView from './views/HomeView.vue'
+import HeadBanner from '@/components/HeadBanner.vue'
+
 export default {
-  components: { HomeView }
+  components: { HeadBanner }
 }
 
 </script>

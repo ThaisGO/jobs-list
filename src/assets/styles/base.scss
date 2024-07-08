@@ -14,15 +14,19 @@ body {
 }
 
 h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: $color-dark-cyan;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: $color-dark-cyan;
 }
 
 h2 {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: $color-dark-cyan;
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: $color-dark-cyan;
+}
+
+a {
+	text-decoration: none;
 }
 
 // GRID
@@ -41,9 +45,14 @@ h2 {
 	align-items: center;
 }
 
+.wrap {
+	flex-wrap: wrap;
+}
+
 .flex-colunm {
 	flex-direction: column;
 }
+
 // MEDIA QUERIES
 @media all and (min-width: 1024px) and (max-width: 1280px) {
 	.container {
@@ -55,10 +64,11 @@ h2 {
 	.container {
 		width: 95%;
 	}
+
 	h1 {
 		font-size: 1.5rem;
 	}
-	
+
 	h2 {
 		font-size: 1.25rem;
 
@@ -76,7 +86,8 @@ h2 {
 		width: 90%;
 	}
 
-	h1, h2 {
+	h1,
+	h2 {
 		font-size: 1rem;
 	}
 }
