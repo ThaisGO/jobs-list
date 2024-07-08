@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ref } from 'vue'
 
-export default function useJobs() {
+export default function useJob() {
     const jobs = ref([])
     const backupJobs = ref([])
     const error = ref(null)

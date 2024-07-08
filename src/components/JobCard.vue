@@ -2,11 +2,15 @@
     <div class="card items-center" v-for="job in jobs" :key="job.id">
         <div class="flex items-center">
             <div class="flex image">
-                <img :src="require(`@/assets/${job.logo}`)" alt="">
+                <router-link :to="{ name: 'job', params: {id: job.id }}">
+                    <img :src="require(`@/assets/${job.logo}`)" alt="">
+                </router-link>
             </div>
             <div class="flex flex-colunm">
                 <div class="flex card-title">
-                    <h2>{{ job.company }}</h2>
+                    <router-link :to="{ name: 'job', params: {id: job.id }}">
+                        <h2>{{ job.company }}</h2>
+                    </router-link>
                     <span class="new" v-if="job.new">NEW</span>
                     <span class="feature" v-if="job.featured">FEATURED</span>
                 </div>

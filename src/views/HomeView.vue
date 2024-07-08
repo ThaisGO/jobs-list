@@ -1,5 +1,4 @@
 <template>
-  <HeadBanner />
   <div v-if="error">{{ error }}</div>
   <main class="container">
     <FilterTech :data="tagFilter" @clear="clearFilter" @remove="removeTag" v-if="tagFilter.length > 0" />
