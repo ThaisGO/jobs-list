@@ -2,7 +2,6 @@
   <div class="container content">
     <div class="content-job flex" v-if="job">
       <div class="content-job--img">
-        <!-- <img src="https://placehold.jp/200x200.png" alt="" /> -->
         <img :src="require(`@/assets/${job.logo}`)" alt="">
       </div>
       <div class="content-job--info">
@@ -52,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div v-else="error">Company not found</div>
+    <div v-if="error">{{  error  }}</div>
   </div>
 </template>
 
@@ -64,16 +63,21 @@ import { BarChart } from 'lucide-vue-next';
 import { FileText } from 'lucide-vue-next';
 import { Building } from 'lucide-vue-next';
 import { Briefcase } from 'lucide-vue-next';
+import { onBeforeMount, onMounted } from "vue";
 
 export default {
   props: ["id"],
   components: { BarChart, FileText, Building, Briefcase },
   setup() {
     const route = useRoute();
+    const errShow = false
     const { job, error, getJob } = useJob(route.params.id);
-    getJob();
+    
+    onMounted(() => {
+      getJob();
+    })
 
-    return { job, error };
+    return { job, error, errShow };
   },
 };
 </script>
