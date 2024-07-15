@@ -22,12 +22,8 @@ export default function useJob(id) {
                     }
                 });
         } catch (err) {
-            if (err.response) {
-                console.log(err.response);
-                console.log(err.response.data);
-                console.log(err.response.status);
-                console.log(err.response.headers);
-            }
+            error.value = err.message
+            console.error('Error fetching jobs:', err.message)
         }
     };
 
