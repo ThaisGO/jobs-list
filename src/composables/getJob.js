@@ -12,13 +12,10 @@ export default function useJob(id) {
                 .then((response) => {
                     if (response.status === 200) {
                         job.value = response.data;
-                    } else if (response.status === 404) {
-                        console.log(
-                            "The requested resource does not exist or has been deleted"
-                        );
-                        error.value = response.status
+                    }  else if (response.status === 404) {
+                        throw new Error('The requested resource does not exist or has been deleted')
                     } else {
-                        throw Error("No response here");
+                        throw new Error('An unexpected error occurred')
                     }
                 });
         } catch (err) {
